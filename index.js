@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-// const {  } = require('./routes/users')
+const { getAllCharacters } = require('./src/routes/characters')
 // const {  } = require('./routes/characters')
 // const {  } = require('./routes/stats')
 
@@ -26,9 +26,9 @@ app.get(`/`, (request, response) => {
 //   .put()
 //   .delete()
 
-// app
-//   .route('/characters')
-//   .get()
+app
+  .route('/characters')
+  .get(getAllCharacters)
 
 // app
 //   .route('/characters/:id')

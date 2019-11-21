@@ -43,8 +43,4 @@ app
   .route('/statistics')
   .get(getAllStats)
 
-// app
-//   .route('/stats/reviews/positive')
-//   .get()
-
 app.listen(PORT, () => console.log(`The Server is up and running on port ${PORT}`))

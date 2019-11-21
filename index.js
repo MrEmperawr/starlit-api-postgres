@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const { getAllCharacters, getCharacterByID } = require('./src/routes/characters')
-// const {  } = require('./routes/characters')
+const { getAllUsers, getUserByID, getCharactersByUserID, addNewUser } = require('./src/routes/users')
 // const {  } = require('./routes/stats')
 
 const PORT = 3002
@@ -15,24 +15,29 @@ app.get(`/`, (request, response) => {
   response.send('Test round for Starlit DB using PostGres! Look up users and characters around here! Also find stats and such!')
 });
 
-// app
-//   .route('/users')
-//   .get()
-//   .post()
+app
+  .route('/users')
+  .get(getAllUsers)
+  .post(addNewUser)
 
-// app
-//   .route('/users/:id')
-//   .get()
-//   .put()
-//   .delete()
+app
+  .route('/users/:id')
+  .get(getUserByID)
+  .put()
+  .delete()
 
 app
   .route('/characters')
   .get(getAllCharacters)
 
 app
+  .route('/users/charcaters/:id')
+  .get(getCharactersByUserID)
+
+app
   .route('/characters/:id')
   .get(getCharacterByID)
+  .delete()
 
 // app
 //   .route('/stats')

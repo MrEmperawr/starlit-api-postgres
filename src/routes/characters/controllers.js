@@ -7,6 +7,19 @@ const getAllCharacters = (request, response) => {
     })
 }
 
+const getCharacterByID = (request, response) => {
+    const id = parseInt(request.params.id)
+    pool.query('SELECT * FROM characters WHERE id = $1',
+     [id], 
+     (error, results) => {
+         console.log(results)
+        if (error) throw error
+        response.status(200).send(results.rows)
+    })
+
+}
+
 module.exports = {
     getAllCharacters,
+    getCharacterByID,
 }

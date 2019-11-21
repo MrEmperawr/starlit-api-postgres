@@ -7,13 +7,15 @@ const getAllStats = async (request, response) => {
         const heritageDistribution = await pool.query('SELECT COUNT (cultural_heritage), cultural_heritage FROM characters GROUP BY cultural_heritage')
         const archetypeDistribution = await pool.query('SELECT COUNT(archetype), archetype FROM characters GROUP by archetype')
         const backgroundDistribution = await pool.query('SELECT COUNT(background), background FROM characters GROUP by background')
+        const characterPerUser = await pool.query('SELECT COUNT (name) as character_count, user_id FROM characters GROUP BY user_id')
         
         const stats = [
             ...characters.rows, 
             ...userCount.rows, 
             ...heritageDistribution.rows, 
             ...archetypeDistribution.rows, 
-            ...backgroundDistribution.rows
+            ...backgroundDistribution.rows,
+            ...characterPerUser.rows
         ]
 
         response.status(200).send(stats)

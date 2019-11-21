@@ -41,9 +41,22 @@ const addNewUser = (request, response) => {
     })
 }
 
+const deleteUser = (request, respone) => {
+    const id = request.params.id
+
+    pool.query('',
+     [id], 
+     (error, results) => {
+         console.log(results)
+        if (error) throw error
+        response.status(200).send(`Successfully deleted the user with ID: ${id}`)
+    })
+}
+
 module.exports = {
     getAllUsers,
     getUserByID,
     getCharactersByUserID,
     addNewUser,
+    deleteUser,
 }

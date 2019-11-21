@@ -21,7 +21,7 @@ const getCharacterByID = (request, response) => {
 const deleteCharacter = (request, response) => {
     const id = request.params.id
 
-    pool.query('DELETE FROM characters WHERE id = $id',
+    pool.query('DELETE FROM characters WHERE id = $1',
      [id], 
      (error, results) => {
          console.log(results)

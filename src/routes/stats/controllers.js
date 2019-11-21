@@ -9,11 +9,11 @@ const getAllStats = async (request, response) => {
         const backgroundDistribution = await pool.query('SELECT COUNT(background), background FROM characters GROUP by background')
         
         const stats = [
-            characters.rows, 
-            userCount.rows, 
-            heritageDistribution.rows, 
-            archetypeDistribution.rows, 
-            backgroundDistribution.rows
+            ...characters.rows, 
+            ...userCount.rows, 
+            ...heritageDistribution.rows, 
+            ...archetypeDistribution.rows, 
+            ...backgroundDistribution.rows
         ]
 
         response.status(200).send(stats)

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 
 const { getAllCharacters, getCharacterByID, deleteCharacter } = require('./src/routes/characters')
 const { getAllUsers, getUserByID, getCharactersByUserID, addNewUser, deleteUser } = require('./src/routes/users')
-// const {  } = require('./routes/stats')
+const { getAllStats } = require('./src/routes/stats')
 
 const PORT = 3002
 const app = express()
@@ -39,9 +39,9 @@ app
   .get(getCharacterByID)
   .delete(deleteCharacter)
 
-// app
-//   .route('/stats')
-//   .get()
+app
+  .route('/statistics')
+  .get(getAllStats)
 
 // app
 //   .route('/stats/reviews/positive')

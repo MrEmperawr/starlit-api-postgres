@@ -18,20 +18,20 @@ const getCharacterByID = (request, response) => {
     })
 }
 
-// const deleteCharacter = (request, response) => {
-//     const id = request.params.id
+const deleteCharacter = (request, response) => {
+    const id = request.params.id
 
-//     pool.query('DELETE * FROM characters WHERE id = $id',
-//      [id], 
-//      (error, results) => {
-//          console.log(results)
-//         if (error) throw error
-//         response.status(200).send(results.rows)
-//     })
-// }
+    pool.query('DELETE * FROM characters WHERE id = $id',
+     [id], 
+     (error, results) => {
+         console.log(results)
+        if (error) throw error
+        response.status(200).send(results.rows)
+    })
+}
 
 module.exports = {
     getAllCharacters,
     getCharacterByID,
-    // deleteCharacter
+    deleteCharacter
 }
